@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+class YouTubeChannel{
+    private:
+    string Name;
+    
+    int SubscribersCount;
+    vector<string> VideoList;
+    
+    protected:
+    string OwnerName;
+    
+    public:
+    YouTubeChannel(string name, string ownername)
+    {
+        Name=name;
+        OwnerName=ownername;
+        SubscribersCount=0;
+    }
+    void getInfo()
+    {
+        cout<<"Name : "<<" "<<Name<<endl;
+        cout<<"OwnerName : "<<" "<<OwnerName<<endl;
+        cout<<"SubscribersCount : "<<" "<<SubscribersCount<<endl;
+        cout<<"VIDEOS: "<<endl;
+        for(string videolist:VideoList)
+        {
+           cout<<videolist<<" "<<endl;
+        }
+        
+    }
+    void Subscribe()
+    {
+        SubscribersCount++;
+    }
+    void Unsubscribe()
+    {
+        if(SubscribersCount>0)
+        SubscribersCount--;
+    }
+    void videolist(string title)
+    {
+        VideoList.push_back(title);
+    }
+};
+
+class CookingYouTubeChannel :public YouTubeChannel{
+    public:
+    CookingYouTubeChannel(string name, string title): YouTubeChannel(name, title){
+        
+    }
+    void practice()
+    {
+        cout<<OwnerName<<" is Practicing cooking, learning new recipe, experimenting with the spices....."<<endl;
+    }
+    
+};
+
+int main()
+{
+    CookingYouTubeChannel ytChannel("Amy's Kitchen", "Amy");
+    CookingYouTubeChannel ytChannel2("John's Kitchen", "John");
+    ytChannel.videolist("BananaShake");
+    ytChannel.videolist("MangoShake");
+    ytChannel.Subscribe();
+    ytChannel.Subscribe();
+    ytChannel.Subscribe();
+    ytChannel.Subscribe();
+    ytChannel.Subscribe();
+    ytChannel.Unsubscribe();
+    ytChannel.getInfo();
+    ytChannel.practice();
+    ytChannel2.practice();
+    
+    
+    
+    return 0;
+}
